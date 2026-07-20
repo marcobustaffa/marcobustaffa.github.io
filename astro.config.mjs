@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  // `site` and `base` are set in Task 9 (deployment).
+  site: 'https://marcobustaffa.github.io',
+  // User-site repo (marcobustaffa.github.io) serves at the root, so no `base` needed.
 });
