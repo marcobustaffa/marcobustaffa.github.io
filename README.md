@@ -1,6 +1,6 @@
 # marcobustaffa.github.io
 
-Personal portfolio, built with [Astro](https://astro.build).
+Personal portfolio.
 
 ## Develop
 
