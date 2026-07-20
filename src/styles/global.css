@@ -46,7 +46,17 @@ p { margin: 0 0 1rem; }
   margin-bottom: 1rem;
 }
 section { padding-block: 3.5rem; }
-section + section { border-top: 1px solid var(--border); }
+/* Short, centered divider between sections instead of a full-width line. */
+section + section { padding-top: 0; }
+section + section::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--border);
+  margin: 0 auto 3.5rem;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
