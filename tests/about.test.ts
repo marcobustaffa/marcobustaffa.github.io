@@ -10,4 +10,5 @@ test('About renders the narrative and education facts', async () => {
   expect(html).toContain('University of Padova');
   expect(html).toContain('103/110');
   expect(html).toContain('UNSW');
+  expect(html).toContain('TOEFL iBT');
 });

@@ -4,14 +4,13 @@ import { projects } from '../data/projects';
 ---
 <section id="projects" class="projects">
   <div class="container">
-    <p class="section-label">// featured work</p>
-    <div class="grid">
+    <p class="section-label">// projects</p>
+    <div class="list">
       {projects.map((project) => <ProjectCard project={project} />)}
     </div>
   </div>
 </section>
 
 <style>
-  .grid { display: grid; gap: 1.25rem; }
-  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .list { display: grid; gap: 2rem; }
 </style>

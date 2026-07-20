@@ -1,34 +1,34 @@
 ---
-// About: the narrative thread.
+// About: concise identity line plus key achievements.
+const highlights = [
+  'MSc thesis at the UNSW AI Institute in Sydney: AnyLight, a multi-agent RL system for city-scale traffic-signal control.',
+  'Shipped an LLM pipeline automating legal document work as an AI consultant.',
+  'At Tec Systems Engineering: drove a monolith-to-microservices strategy and cut storage 70% via a Hadoop/Parquet migration.',
+  'English: C1 (TOEFL iBT).',
+];
 ---
 <section id="about" class="about">
   <div class="container">
     <p class="section-label">// about</p>
-    <p>
-      I'm an AI Engineer and Data Scientist with a Computer Science bachelor's
-      (103/110) and a Data Science master's from the <strong>University of Padova</strong>.
-      I work on intelligent systems across the whole stack, from the production
-      backend that keeps them running to the frontier ML that makes them smart.
+    <p class="intro">
+      AI Engineer and Data Scientist. BSc Computer Science (103/110) and MSc Data
+      Science at the University of Padova.
     </p>
-    <p>
-      That combination runs through everything I've built. At Tec Systems
-      Engineering I wrote Java backends and drove a cloud-native migration for
-      traffic-control software; for my master's thesis (carried out at the
-      <strong>UNSW AI Institute in Sydney</strong>) I designed <em>AnyLight</em>, a
-      multi-agent reinforcement-learning system that coordinates whole networks of
-      traffic signals; and as a consultant I shipped an LLM pipeline that automates
-      legal document work.
-    </p>
-    <p>
-      I'm looking for a role at an innovative company or startup where I can keep
-      shipping AI end-to-end and grow fast. If that sounds like your team,
-      <a href="#contact">let's talk</a>.
-    </p>
+    <ul class="highlights">
+      {highlights.map((h) => <li>{h}</li>)}
+    </ul>
   </div>
 </section>
 
 <style>
-  .about p { max-width: 40rem; color: var(--text); }
-  .about strong { color: var(--text); }
-  .about em { color: var(--accent); font-style: normal; }
+  .about .intro { color: var(--text-muted); max-width: 40rem; }
+  .about .highlights {
+    margin: 1.25rem 0 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.6rem;
+    color: var(--text);
+    max-width: 42rem;
+  }
+  .about .highlights li::marker { color: var(--accent); }
 </style>
