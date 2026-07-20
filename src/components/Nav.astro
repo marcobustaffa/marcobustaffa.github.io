@@ -1,0 +1,28 @@
+---
+// Sticky top nav with terminal prompt branding.
+---
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand mono" href="#top">~/marco</a>
+    <nav aria-label="Primary">
+      <a href="#projects">work</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding-block: 0.85rem; }
+  .brand { color: var(--accent); font-size: 0.95rem; }
+  .brand:hover { text-decoration: none; }
+  nav { display: flex; gap: 1.25rem; font-family: var(--font-mono); font-size: 0.85rem; }
+  nav a { color: var(--text-muted); }
+  nav a:hover { color: var(--accent); text-decoration: none; }
+</style>
