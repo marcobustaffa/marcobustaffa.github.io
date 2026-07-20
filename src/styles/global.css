@@ -46,14 +46,14 @@ p { margin: 0 0 1rem; }
   margin-bottom: 1rem;
 }
 section { padding-block: 3.5rem; }
-/* Short, centered divider between sections instead of a full-width line. */
+/* Divider between sections, matched to the text column width (not full page). */
 section + section { padding-top: 0; }
 section + section::before {
   content: "";
   display: block;
-  width: 2.5rem;
-  height: 2px;
-  border-radius: 1px;
+  /* container width (capped at --maxw) minus its 1.25rem inline padding on each side */
+  width: calc(min(100%, var(--maxw)) - 2.5rem);
+  height: 1px;
   background: var(--border);
   margin: 0 auto 3.5rem;
 }
