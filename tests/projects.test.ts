@@ -3,8 +3,8 @@ import { expect, test } from 'vitest';
 import Projects from '../src/components/Projects.astro';
 import { projects } from '../src/data/projects';
 
-test('there are four featured projects, AnyLight first', () => {
-  expect(projects).toHaveLength(4);
+test('there are three featured projects, AnyLight first', () => {
+  expect(projects).toHaveLength(3);
   expect(projects[0].title).toBe('AnyLight');
 });
 
@@ -19,8 +19,6 @@ test('Projects section renders every project with its stack', async () => {
   }
   // AnyLight highlights the international collaboration.
   expect(html).toContain('UNSW');
-  // The Tecsen data project carries its hard numbers.
-  expect(html).toContain('70%');
 });
 
 test('a project with a repo renders a code link', async () => {

@@ -25,10 +25,4 @@ export const projects: Project[] = [
       'Environmental sound classification with Spiking Neural Networks, an energy-efficient alternative to standard deep nets.',
     repo: 'https://github.com/marcobustaffa/env-soundnet',
   },
-  {
-    title: 'Hadoop / Parquet Migration',
-    stack: ['Java', 'Hadoop HDFS', 'Apache Parquet'],
-    summary:
-      'Re-architected file storage for a traffic platform onto Hadoop HDFS with Apache Parquet: 70% less storage, 30% faster queries. Built at Tec Systems Engineering.',
-  },
 ];
