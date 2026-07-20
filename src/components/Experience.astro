@@ -1,0 +1,32 @@
+---
+import { roles } from '../data/experience';
+---
+<section id="experience" class="experience">
+  <div class="container">
+    <p class="section-label">// experience</p>
+    <ol class="timeline">
+      {roles.map((role) => (
+        <li class="role">
+          <div class="role-head">
+            <h3>{role.title}</h3>
+            <span class="period mono">{role.period}</span>
+          </div>
+          <p class="org mono">{role.org}</p>
+          <ul class="highlights">
+            {role.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; }
+  .role-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem; align-items: baseline; }
+  h3 { font-size: 1.15rem; margin: 0; }
+  .period { color: var(--text-muted); font-size: 0.8rem; }
+  .org { color: var(--accent); font-size: 0.85rem; margin: 0.15rem 0 0.75rem; }
+  .highlights { color: var(--text-muted); margin: 0; padding-left: 1.1rem; display: grid; gap: 0.4rem; }
+  .highlights li::marker { color: var(--accent); }
+</style>
