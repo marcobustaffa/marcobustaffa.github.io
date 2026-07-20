@@ -116,9 +116,21 @@ engineering, frontier ML, and LLM products; education (BSc CS 103/110, MSc Data 
 and the kind of role Marco is looking for.
 
 ### 6.3 Featured Projects (cards: problem → what I built → stack → result)
-1. **AnyLight** *(flagship — MSc thesis)* — a generalizable multi-agent Deep Reinforcement
-   Learning model for heterogeneous traffic networks. *(Abstract & quantified results to be
-   pulled from `dissertation.pdf` during implementation — see §9.)*
+1. **AnyLight** *(flagship — MSc thesis; University of Padova × UNSW Sydney)* — a
+   generalizable **Multi-Agent Reinforcement Learning** architecture for **heterogeneous
+   Traffic Signal Control**. Existing MARL either scales poorly (independent policies isolate
+   knowledge) or can't handle diverse intersection topologies (rigid parameter-shared models).
+   AnyLight's three contributions: (1) a **movement-centric state representation** for
+   semantically aligned inputs across junctions; (2) **universal parameter-sharing** so a
+   single PPO network governs *all* intersections via dynamic padding & masking; (3) a
+   **cross-attention decoder + centralized critic** exploiting neighbour info under Centralized
+   Training / Decentralized Execution (CTDE). Evaluated on six synthetic & real-world networks
+   (RESCO / MA2C suites, SUMO + TraCI); beats classical heuristics and learning baselines by
+   minimizing intersection delay under high-density flows.
+   *Research conducted at the UNSW AI Institute (Sydney); supervisors Prof. Gian Antonio Susto
+   (Padova) & Dr. Hao Xue (UNSW).*
+   **Stack:** Python, PyTorch, PPO / Actor-Critic, cross-attention, SUMO / TraCI.
+   *(Optional: a headline delay-reduction number can be pulled from results ch. pp. 67–79 — see §9.)*
 2. **Legal AI Pipeline** *(consultancy, ~3 months)* — an LLM-based pipeline to automate
    legal procedures and document redaction. Demonstrates shipping GenAI products
    (RAG/agents, evals/observability — Langfuse).
@@ -166,8 +178,10 @@ the featured list (optionally mentioned as "earlier work" only if space allows).
 - **Custom domain:** optional, deferred — ship on the `github.io` subdomain first.
 
 ## 9. Open Items (to resolve during implementation, not blockers)
-- **Thesis (AnyLight) content:** need the abstract + key quantified results. Resolve by
-  running `brew install poppler` so the PDF is readable, or Marco pastes the abstract/results.
+- **Thesis (AnyLight) content:** ✅ resolved — abstract, contributions, and setup read
+  directly from `dissertation.pdf` (poppler installed). *Optional:* pull one headline
+  quantified result (e.g. delay/queue reduction vs. baselines) from the Results chapter
+  (pp. 67–79) if we want a concrete number on the project card.
 - **Project repository links:** confirm which project repos are public and linkable
   (env-soundnet exists on GitHub; AnyLight and legal AI may be private/NDA).
 - **Legal consultancy naming:** confirm whether the client can be named or must stay generic
