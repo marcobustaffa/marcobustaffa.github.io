@@ -101,10 +101,14 @@ personal_website/
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
     "typescript": "^5.5.0",
-    "vitest": "^2.0.0"
+    "vitest": "^3.0.0"
   }
 }
 ```
+
+> Note: Vitest must be v3 — Astro 5 ships Vite 6, and Vitest 2 pins Vite 5, which
+> causes a cryptic "[object Object]" error during test collection. Vitest 3 shares
+> Vite 6 with Astro (deduped).
 
 - [ ] **Step 2: Install dependencies**
 
