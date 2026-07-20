@@ -1,34 +1,45 @@
 ---
-// About: concise identity line plus key achievements.
+// About: education plus key achievements.
+const education = [
+  'Bachelor in Computer Science, University of Padova (103/110)',
+  'Master in Data Science, University of Padova',
+  'Research practicum at the UNSW AI Institute, Sydney',
+];
 const highlights = [
-  'MSc thesis at the UNSW AI Institute in Sydney: AnyLight, a multi-agent RL system for city-scale traffic-signal control.',
+  'AnyLight: a multi-agent RL system for city-scale traffic-signal control (MSc thesis).',
   'Shipped an LLM pipeline automating legal document work as an AI consultant.',
-  'At Tec Systems Engineering: drove a monolith-to-microservices strategy and cut storage 70% via a Hadoop/Parquet migration.',
+  'At Tec Systems Engineering: a cloud-native migration strategy and a Hadoop/Parquet migration that cut storage 70%.',
   'English: C1 (TOEFL iBT).',
 ];
 ---
 <section id="about" class="about">
   <div class="container">
     <p class="section-label">// about</p>
-    <p class="intro">
-      AI Engineer and Data Scientist. BSc Computer Science (103/110) and MSc Data
-      Science at the University of Padova.
-    </p>
-    <ul class="highlights">
-      {highlights.map((h) => <li>{h}</li>)}
-    </ul>
+    <div class="group">
+      <h3 class="mono">Education</h3>
+      <ul class="list">
+        {education.map((e) => <li>{e}</li>)}
+      </ul>
+    </div>
+    <div class="group">
+      <h3 class="mono">Highlights</h3>
+      <ul class="list">
+        {highlights.map((h) => <li>{h}</li>)}
+      </ul>
+    </div>
   </div>
 </section>
 
 <style>
-  .about .intro { color: var(--text-muted); max-width: 40rem; }
-  .about .highlights {
-    margin: 1.25rem 0 0;
-    padding-left: 1.1rem;
-    display: grid;
-    gap: 0.6rem;
-    color: var(--text);
-    max-width: 42rem;
+  .about .group { margin-bottom: 1.75rem; max-width: 42rem; }
+  .about .group:last-child { margin-bottom: 0; }
+  .about h3 {
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
   }
-  .about .highlights li::marker { color: var(--accent); }
+  .about .list { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.5rem; color: var(--text); }
+  .about .list li::marker { color: var(--accent); }
 </style>
