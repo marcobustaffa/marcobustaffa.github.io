@@ -29,17 +29,21 @@
     const ACCENT = '#5eead4';
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Bigger, more energetic tuning for a prominent hero element.
+    // Tuned to spread wide and fill the hero: weak links so the graph doesn't
+    // contract into a blob, gentle repulsion for even spacing, no centre pull,
+    // and soft walls (set per-resize) that contain the spread near the edges.
     const TUNING = {
-      linkDistance: 130,
-      linkStrength: 0.025,
-      charge: 500,
-      damping: 0.87,
-      centerStrength: 0.002,
-      wander: 0.07,
-      pointerRadius: 320,
+      linkDistance: 150,
+      linkStrength: 0.008,
+      charge: 650,
+      damping: 0.88,
+      centerStrength: 0,
+      wander: 0.06,
+      pointerRadius: 340,
       pointerStrength: 0.5,
-      minDistance: 16,
+      minDistance: 20,
+      boundaryMargin: 52,
+      boundaryStrength: 0.03,
     };
 
     let width = 0;
@@ -62,26 +66,26 @@
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    // Lay clusters out left -> middle -> right so the graph reads as a network
-    // spanning the full hero width; spread vertically across its height.
+    // Wide, overlapping bands (left / middle / right) so the graph is spread
+    // across the whole page width from the start; spread over the full height.
     function seedNodes() {
       return networkNodes.map((node) => {
         let bandMin: number;
         let bandMax: number;
         if (node.cluster === 0) {
-          bandMin = 0.05;
-          bandMax = 0.34;
+          bandMin = 0.03;
+          bandMax = 0.46;
         } else if (node.cluster === 2) {
-          bandMin = 0.66;
-          bandMax = 0.95;
+          bandMin = 0.54;
+          bandMax = 0.97;
         } else {
-          bandMin = 0.36;
-          bandMax = 0.64;
+          bandMin = 0.28;
+          bandMax = 0.72;
         }
         return {
           id: node.id,
           x: width * (bandMin + Math.random() * (bandMax - bandMin)),
-          y: height * (0.08 + Math.random() * 0.84),
+          y: height * (0.06 + Math.random() * 0.88),
         };
       });
     }
@@ -105,17 +109,25 @@
 
       // Nodes and labels.
       ctx!.fillStyle = ACCENT;
-      ctx!.font = '13px "JetBrains Mono", ui-monospace, monospace';
+      ctx!.font = '14px "JetBrains Mono", ui-monospace, monospace';
       ctx!.textBaseline = 'middle';
       for (let i = 0; i < sim.nodes.length; i++) {
         const nd = sim.nodes[i];
         ctx!.globalAlpha = 0.32;
         ctx!.beginPath();
-        ctx!.arc(nd.x, nd.y, 4, 0, Math.PI * 2);
+        ctx!.arc(nd.x, nd.y, 5, 0, Math.PI * 2);
         ctx!.fill();
+        // Flip the label to the left near the right edge so it never clips.
         ctx!.globalAlpha = 0.22;
-        ctx!.fillText(networkNodes[i].label, nd.x + 8, nd.y);
+        if (nd.x > width * 0.82) {
+          ctx!.textAlign = 'right';
+          ctx!.fillText(networkNodes[i].label, nd.x - 9, nd.y);
+        } else {
+          ctx!.textAlign = 'left';
+          ctx!.fillText(networkNodes[i].label, nd.x + 9, nd.y);
+        }
       }
+      ctx!.textAlign = 'left';
       ctx!.globalAlpha = 1;
     }
 

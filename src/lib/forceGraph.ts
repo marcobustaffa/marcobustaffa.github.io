@@ -40,6 +40,10 @@ export interface SimOptions {
   pointerStrength: number;
   /** Repulsion clamp so overlapping nodes don't launch apart. */
   minDistance: number;
+  /** Distance from each edge at which soft walls start pushing nodes inward. */
+  boundaryMargin: number;
+  /** How firmly the soft walls push (0 disables containment). */
+  boundaryStrength: number;
 }
 
 export const DEFAULT_OPTIONS: Omit<SimOptions, 'width' | 'height'> = {
@@ -53,6 +57,8 @@ export const DEFAULT_OPTIONS: Omit<SimOptions, 'width' | 'height'> = {
   pointerRadius: 200,
   pointerStrength: 0.12,
   minDistance: 12,
+  boundaryMargin: 0,
+  boundaryStrength: 0,
 };
 
 export interface Simulation {
@@ -128,6 +134,17 @@ export function createSimulation(
       // Perpetual gentle drift, phase-offset per node so they don't move in unison.
       fx[i] += Math.cos(t * opts.wanderSpeed + i * 1.7) * opts.wander;
       fy[i] += Math.sin(t * opts.wanderSpeed + i * 2.3) * opts.wander;
+
+      // Soft walls near the edges keep the spread contained without collapsing it.
+      if (opts.boundaryStrength > 0 && opts.boundaryMargin > 0) {
+        const m = opts.boundaryMargin;
+        if (simNodes[i].x < m) fx[i] += (m - simNodes[i].x) * opts.boundaryStrength;
+        else if (simNodes[i].x > opts.width - m)
+          fx[i] += (opts.width - m - simNodes[i].x) * opts.boundaryStrength;
+        if (simNodes[i].y < m) fy[i] += (m - simNodes[i].y) * opts.boundaryStrength;
+        else if (simNodes[i].y > opts.height - m)
+          fy[i] += (opts.height - m - simNodes[i].y) * opts.boundaryStrength;
+      }
 
       // Cursor attraction: strongest at the cursor, fading to zero at the radius.
       if (pointer && pointer.active) {

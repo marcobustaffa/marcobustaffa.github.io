@@ -45,6 +45,22 @@ test('a node outside the cursor radius is not pulled', () => {
   expect(sim.nodes[0].x).toBe(100);
 });
 
+test('soft boundary pushes an out-of-bounds node back inward', () => {
+  const sim = createSimulation(
+    // Node sits past the right wall (width 1000, margin 100 => wall at x=900).
+    [{ id: 'a', x: 980, y: 500 }],
+    [],
+    {
+      ...QUIET,
+      pointerStrength: 0,
+      boundaryMargin: 100,
+      boundaryStrength: 0.05,
+    },
+  );
+  sim.step(null, 0);
+  expect(sim.nodes[0].x).toBeLessThan(980);
+});
+
 test('a link draws two separated nodes closer together', () => {
   const sim = createSimulation(
     [
