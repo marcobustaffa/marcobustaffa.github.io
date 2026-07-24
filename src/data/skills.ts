@@ -17,14 +17,19 @@ export const skillGroups: SkillGroup[] = [
       'LLM Evals & Observability (Langfuse)',
       'Spiking Neural Networks',
       'PyTorch',
+      'Scikit-learn',
     ],
   },
   {
-    label: 'Data & Infra',
-    items: ['Apache Hadoop', 'Apache Spark', 'Apache Parquet', 'MongoDB', 'InfluxDB', 'Docker'],
+    label: 'Data & Analytics',
+    items: ['Pandas', 'NumPy', 'Matplotlib', 'R'],
   },
   {
-    label: 'Tools & Foundations',
-    items: ['Git', 'Linux', 'R', 'Cloud-Native / Microservices'],
+    label: 'Big Data & Infra',
+    items: ['Apache Hadoop', 'Apache Spark', 'Apache Parquet', 'MongoDB', 'InfluxDB', 'Docker', 'Linux'],
+  },
+  {
+    label: 'Web & Software Eng',
+    items: ['React', 'Angular', 'REST APIs', 'Git', 'Cloud-Native / Microservices'],
   },
 ];

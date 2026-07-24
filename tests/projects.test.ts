@@ -3,8 +3,8 @@ import { expect, test } from 'vitest';
 import Projects from '../src/components/Projects.astro';
 import { projects } from '../src/data/projects';
 
-test('there are three featured projects, AnyLight first', () => {
-  expect(projects).toHaveLength(3);
+test('there are four featured projects, AnyLight first', () => {
+  expect(projects).toHaveLength(4);
   expect(projects[0].title).toBe('AnyLight');
 });
 
